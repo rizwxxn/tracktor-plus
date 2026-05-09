@@ -22,7 +22,7 @@ export const GET: RequestHandler = async (event) => {
     const logsResult = await maintenanceLogService.getMaintenanceLogs(vehicleId);
     const maintenanceLogs = logsResult.data || [];
 
-    const pdfBuffer = await generateMaintenanceLogsPdf(maintenanceLogs, {
+    const pdfBuffer: any = await generateMaintenanceLogsPdf(maintenanceLogs, {
       licensePlate: vehicle.licensePlate,
       name: vehicle.name
     });
