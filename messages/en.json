@@ -266,6 +266,7 @@
   "maintenance_menu_sheet_title": "Update Maintenance Log",
   "maintenance_tab_title": "Maintenance History",
   "maintenance_add_action": "Add Maintenance Log",
+  "maintenance_export_pdf": "Export PDF",
   "maintenance_delete_success": "Deleted maintenance log.",
   "maintenance_delete_error": "Some error occurred while deleting maintenance log.",
   "insurance_form_provider_label": "Insurance Provider",

@@ -6,6 +6,7 @@ interface RequestConfig {
   timeout?: number;
   baseURL?: string;
   skipInterceptors?: boolean;
+  responseType?: 'json' | 'blob' | 'text';
 }
 
 interface Response<T = any> {
@@ -115,7 +116,9 @@ class HttpClient {
       let responseData: T;
       const contentType = response.headers.get('content-type');
 
-      if (contentType?.includes('application/json')) {
+      if (config.responseType === 'blob') {
+        responseData = (await response.blob()) as T;
+      } else if (contentType?.includes('application/json')) {
         responseData = await response.json();
       } else {
         responseData = (await response.text()) as T;
