@@ -16,6 +16,8 @@
     importSheetTitle?: string;
     importSheetComponent?: AnyComponent;
     importSheetData?: unknown | SheetDataResolver;
+    exportAction?: (() => void) | null;
+    exportActionDisabled?: boolean;
   }
 
   let {
@@ -26,7 +28,9 @@
     addSheetData,
     importSheetTitle,
     importSheetComponent,
-    importSheetData
+    importSheetData,
+    exportAction = null,
+    exportActionDisabled = false
   }: Props = $props();
 
   const resolveData = (data: unknown | SheetDataResolver) => {
@@ -52,6 +56,8 @@
           resolveData(importSheetData)
         )
     : null}
+  {exportAction}
+  exportActionDisabled={exportActionDisabled || !vehicleStore.selectedId}
   addActionDisabled={!vehicleStore.selectedId}
 >
   <ListComponent />
