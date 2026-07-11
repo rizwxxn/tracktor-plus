@@ -1,3 +1,4 @@
+import { randomUUID } from 'crypto'; // Add this at the top with your other imports BUG FIXX
 import * as schema from '../db/schema/index';
 import { db } from '../db/index';
 import { eq } from 'drizzle-orm';
@@ -31,7 +32,7 @@ export const addFuelLog = async (
     .values({
       ...fuelLogData,
       vehicleId: vehicleId,
-      id: undefined
+      id: randomUUID()
     })
     .returning();
   return createSuccessResponse(fuelLog[0], 'Fuel log added successfully.');
